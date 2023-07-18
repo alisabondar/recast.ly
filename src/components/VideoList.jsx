@@ -1,11 +1,12 @@
 import VideoListEntry from './VideoListEntry.js';
+// import exampleVideoData from '../data/exampleVideoData.js';
 
-const VideoList = ({exampleVideoData}) => {
+const VideoList = ({videos}) => {
   return (
     <div className="video-list">
-      <div><h5>{exampleVideoData.map((video) => {
-        return <VideoListEntry video = {video} />;
-      })}</h5></div>
+      {videos.map((video) => (
+        <VideoListEntry video ={video} />
+      ))}
     </div>
   );
 };
