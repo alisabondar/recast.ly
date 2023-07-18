@@ -26,7 +26,7 @@ export default function App() {
         <div className="col-md-7">
           <div>
             <VideoPlayer video ={currentVideo}/>
-            {/* <VideoPlayer onClick=() => doSomething */}
+            {/* <VideoPlayer onClick={var => setState(var) */}
           </div>
         </div>
         <div className="col-md-5">
