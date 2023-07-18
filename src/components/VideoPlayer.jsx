@@ -1,15 +1,17 @@
-const VideoPlayer = ({video}) => (
-  <div className="video-player">
-    <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${video.id.videoId}`} allowFullScreen></iframe>
-      {/* onClick={event => video.onClick(videoID change?)} */}
+const VideoPlayer = ({video}) => {
+  return (
+    <div className="video-player">
+      <div className="embed-responsive embed-responsive-16by9">
+        <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${video.id.videoId}`} allowFullScreen></iframe>
+      </div>
+      <div className="video-player-details">
+        <h3>{video.snippet.title}</h3>
+        <div>{video.snippet.description}</div>
+      </div>
     </div>
-    <div className="video-player-details">
-      <h3>{video.snippet.title}</h3>
-      <div>{video.snippet.description}</div>
-    </div>
-  </div>
-);
+  );
+//onClick={event => video.onClick(videoID change?)}
+};
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
