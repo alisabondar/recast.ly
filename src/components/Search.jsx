@@ -1,10 +1,11 @@
-import searchYouTube from '../lib/searchYouTube.js';
 
-const Search = () => {
-  console.log(searchYouTube('react', callback, YOUTUBE_API_KEY));
+
+const Search = ({searchHandler}) => {
+  // console.log(searchYouTube('react', callback, YOUTUBE_API_KEY));
+  //e.target.value --> query
   return (
     <div className="search-bar form-inline">
-      <input className="form-control" type="text" />
+      <input onChange={(e) => searchHandler(e)}className="form-control" type="text" />
       <button className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
       </button>

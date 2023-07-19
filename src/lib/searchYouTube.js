@@ -1,4 +1,4 @@
-import { API_KEY, YOUTUBE_API_KEY } from '../config/config.js';
+import { API_KEY, YOUTUBE_API_KEY } from '../config/config.example.js';
 
 $.ajaxPrefilter(function (settings, _, jqXHR) {
   jqXHR.setRequestHeader('Authorization', API_KEY);
@@ -13,27 +13,29 @@ $.ajaxPrefilter(function (settings, _, jqXHR) {
 //   console.log(array);
 // };
 
-var searchYouTube = (q, callback, apiKEY) => {
+var searchYouTube = (q, callback) => {
   // TODO
-  console.log('searchyt is being called -->');
-  $.ajax({
-    url: 'https://app-hrsei-api.herokuapp.com/api/recastly/videos', //endpoint - use data for extras
-    type: 'GET',
-    data: {
-      key: apiKEY,
-      q: q,
-      type: video
-    },
-    // contentType: 'application/json',
+  console.log('testing!!!!');
+  $.get('https://app-hrsei-api.herokuapp.com/api/recastly/videos',
+    {
+      key: YOUTUBE_API_KEY,
+      query: q
+    })
+    .done((videoList) => {
+      if (callback) {
+        console.log('get worked!!!');
+        console.log('videoList: ', videoList);
+        callback(videoList);
+      }
+    })
+    .fail(({ responseJSON }) => {
+      console.log('get method failed!!!');
+      responseJSON.error.errors.forEach((err) => console.error(err));
+    });
+  // console.log('the q: ', q);
+  console.log('q in searchYT-->', q);
 
-    success: function(data) {
-      // should be an array of videos
-      console.log(data);
-    },
-    error: errorCB || function(error) {
-      console.error('Recastly: Failed to fetch videos', error);
-    }
-  });
 };
+
 
 export default searchYouTube;
