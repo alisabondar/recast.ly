@@ -9,7 +9,8 @@ import searchYouTube from '../lib/searchYouTube.js';
 export default function App() {
   const videos = exampleVideoData;
 
-  const [list, setList] = useState(videos);
+  const [list, setList] = useState([]);
+  console.log(list);
   const [player, setPlayer] = useState(videos[0]);
   // call searchYouTube and replace states with corresponding data
 
